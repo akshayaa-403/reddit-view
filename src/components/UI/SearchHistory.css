@@ -30,7 +30,7 @@
 }
 
 .clear-history:hover {
-  color: #ff4500;
+  color: #00aeff;
 }
 
 .history-list {
@@ -62,7 +62,7 @@
 
 .history-link:hover {
   background-color: #fff0e6;
-  border-color: #ff4500;
+  border-color: #00aeff;
   transform: translateX(5px);
 }
 

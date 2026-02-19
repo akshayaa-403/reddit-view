@@ -36,7 +36,7 @@ const SearchForm: React.FC<SearchFormProps> = ({ onFetch, isLoading }) => {
   };
 
   const handlePasteExample = () => {
-    setUrl('https://www.reddit.com/r/typescript/comments/1bshvi6/typescript_5_announcement/');
+    setUrl('https://www.reddit.com/r/node/comments/1qv6dzr/i_built_a_typescript_sdk_to_handle_custom_domains/');
   };
 
   return (

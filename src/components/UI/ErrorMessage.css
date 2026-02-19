@@ -1,9 +1,9 @@
 .error-container {
   text-align: center;
   padding: 40px;
-  background-color: #fff3f3;
+  background-color: #f3faff;
   border-radius: 8px;
-  border: 1px solid #ffcdcd;
+  border: 1px solid #cdf1ff;
 }
 
 .error-icon {
@@ -12,19 +12,19 @@
 }
 
 .error-title {
-  color: #721c24;
+  color: #1c6572;
   margin-bottom: 8px;
   font-size: 20px;
 }
 
 .error-message {
-  color: #856404;
+  color: #048535;
   margin-bottom: 20px;
 }
 
 .retry-button {
   padding: 10px 20px;
-  background-color: #ff4500;
+  background-color: #00d9ff;
   color: white;
   border: none;
   border-radius: 6px;
@@ -34,5 +34,5 @@
 }
 
 .retry-button:hover {
-  background-color: #e03d00;
+  background-color: #0099e0;
 }
