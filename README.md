@@ -26,16 +26,12 @@ Reddit View is a TypeScript-based application that provides an alternative inter
 
    ```bash
    npm install
-   # or
-   yarn install
    ```
 
 3. Start the development server:
 
    ```bash
-   npm start
-   # or
-   yarn start
+   npm run dev
    ```
 
 The application should now be running on your local machine.
