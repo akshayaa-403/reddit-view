@@ -2,15 +2,15 @@
 
 import React from 'react';
 import { useState } from 'react';
-import logo from './logo.svg';
-import './App.css';
+//import logo from './logo.svg';
+//import './App.css';
 
 function App() {
   const [link, setLink] = useState('');
-  const [postData, setPostData] = useState(null);
+  const [postData, setPostData] = useState<{ title: string; body: string } | null>(null);
   
 const handleSubmit = () => {
-  const redditUrl = 'https://api.allorigins.win/raw?url=' + encodeURIComponent(link + '.json');
+  const redditUrl = 'https://jsonplaceholder.typicode.com/posts/1';
   
   fetch(redditUrl)
     .then(response => response.json())
@@ -25,7 +25,7 @@ const handleSubmit = () => {
 
   return (
     <div style={{ textAlign: 'center' }}>
-      Reddit Page View
+      <h1>Reddit Page View</h1>
       <br></br>
       <input 
       value={link} 
@@ -34,6 +34,12 @@ const handleSubmit = () => {
       placeholder="Enter Reddit URL" />
       <button onClick={handleSubmit}>Search</button>
       <p>You typed: {link}</p>
+      {postData && (
+        <div>
+          <h2>{postData.title}</h2>
+          <p>{postData.body}</p>
+        </div>
+)}
     </div>
   );
 }
