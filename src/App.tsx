@@ -1,45 +1,48 @@
-//www.reddit.com/r/webdev/comments/r9wjz8/how_would_i_go_about_using_json_data_to_make/
-
-import React from 'react';
-import { useState } from 'react';
-//import logo from './logo.svg';
-//import './App.css';
+import React, { useState } from "react";
+//import "./App.css";
 
 function App() {
-  const [link, setLink] = useState('');
-  const [postData, setPostData] = useState<{ title: string; body: string } | null>(null);
+  const myText = "Reddit View";
+  const [redditPost, setRedditPost] = useState("");
+  const [posts, setPosts] = useState<any[]>([]);
   
-const handleSubmit = () => {
-  const redditUrl = 'https://jsonplaceholder.typicode.com/posts/1';
-  
-  fetch(redditUrl)
-    .then(response => response.json())
-    .then(data => {
-      console.log('Reddit data:', data);
-      setPostData(data);
-    })
-    .catch(error => {
-      console.log('Error:', error);
-    });
-};
+  const handleSubmit = async () => {
+    const redditUrl = `${redditPost}.json`;
+    const proxyUrl = `https://corsproxy.io/?${encodeURIComponent(redditUrl)}`;
+    console.log("URL:" + redditUrl);
+    
+    try {
+      const response = await fetch(proxyUrl);
+      const data = await response.json();
+      console.log("Data:", data);
+
+      if (Array.isArray(data) && data.length >=2) {
+        const postsData = data[0].data.children[0].data;
+        console.log("Posts:", postsData);
+        setPosts([postsData]);
+      } else {
+        console.log("Invalid data structure:", data);
+      }
+    } catch (error) {
+      console.log("Error fetching Reddit posts:", error);
+    }
+  }
 
   return (
-    <div style={{ textAlign: 'center' }}>
-      <h1>Reddit Page View</h1>
-      <br></br>
-      <input 
-      value={link} 
-      onChange={(e) => setLink(e.target.value)} 
-      type="text" 
-      placeholder="Enter Reddit URL" />
-      <button onClick={handleSubmit}>Search</button>
-      <p>You typed: {link}</p>
-      {postData && (
-        <div>
-          <h2>{postData.title}</h2>
-          <p>{postData.body}</p>
-        </div>
-)}
+    <div className="App">
+      <center>
+      <h1>{myText}</h1>
+      <p>Currently Viewing: r/{redditPost}</p>
+      
+      <input
+        type="text"
+        value={redditPost}
+        onChange={(e) => setRedditPost(e.target.value)}
+        placeholder="Enter subreddit name"
+      />
+      
+      <button onClick={handleSubmit}>Submit</button>
+      </center>
     </div>
   );
 }
