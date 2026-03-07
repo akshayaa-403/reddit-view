@@ -40,24 +40,25 @@ function App() {
         type="text"
         value={redditPost}
         onChange={(e) => setRedditPost(e.target.value)}
-        placeholder="Enter subreddit name"
+        placeholder="Enter Reddit post URL"
         style={{ display: 'block', margin: '0 auto', width: '300px' }}
       />
       <button style={{ display: 'block', margin: '0 auto', marginTop: '10px' }} onClick={handleSubmit}>Submit</button>
       {posts.length > 0 && (
-        <div className="post-card">
+        <><div className="post-card">
           <h2>{posts[0].title}</h2>
           <p>Posted by u/{posts[0].author} | Score: {posts[0].score} | Comments: {posts[0].num_comments}</p>
           {posts[0].selftext && (
             <p style={{ whiteSpace: 'pre-wrap' }}>{posts[0].selftext}</p>
           )}
-          <h3>Comments:</h3>
-          {comments.map((comment, index) => (
-            <div key={index} style={{ border: '1px solid #ccc', padding: '10px', margin: '10px 0' }}>
-              <p>u/{comment.author}: {comment.body}</p>
-            </div>
-          ))}
-        </div>
+        </div><div className="comments-card">
+            <h3>Comments:</h3>
+            {comments.map((comment, index) => (
+              <div key={index} style={{ border: '1px solid #ccc', padding: '10px', margin: '10px 0' }}>
+                <p>u/{comment.author}: {comment.body}</p>
+              </div>
+            ))}
+          </div></>
       )}
     </div>
   );
