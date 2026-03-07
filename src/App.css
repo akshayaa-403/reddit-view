@@ -4,6 +4,18 @@ h1 {
   font-family: Helvetica, sans-serif;
 }
 
+.p {
+  text-align: center;
+  color: #666;
+  font-family: Helvetica, sans-serif;
+}
+
+.post-p {
+  white-space: pre-wrap;
+  font-family: Helvetica, sans-serif;
+  color: #444;
+}
+
 .post-card {
   max-width: 800px;
   margin: 20px auto;
@@ -14,12 +26,18 @@ h1 {
 }
 
 .comment-card {
+  text-align: justify;
   max-width: 800px;
-  margin: 20px auto;
-  padding: 20px;
-  border: 1px solid #eee;
+  margin: 10px auto;
+  padding: 10px;
+  border: 1px solid #ccc;
   border-radius: 10px;
   background-color: white;
+}
+
+.comment-p {
+  font-family: Helvetica, sans-serif;
+  color: #555;
 }
 
 .gray-center-text {
