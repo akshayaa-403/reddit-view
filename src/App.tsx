@@ -36,30 +36,37 @@ function App() {
     <div className="App">
       <h1>{myText}</h1>
       <p className="p">Currently Viewing: {redditPost}</p>
+
       <input
         type="text"
         value={redditPost}
         onChange={(e) => setRedditPost(e.target.value)}
         placeholder="Enter Reddit post URL"
-        style={{ display: 'block', margin: '0 auto', width: '300px' }}
+        className="input"
       />
-      <button style={{ display: 'block', margin: '0 auto', marginTop: '10px' }} onClick={handleSubmit}>Submit</button>
+      <button className="button" onClick={handleSubmit}>
+        Submit
+      </button>
+
       {posts.length > 0 && (
         <><div className="post-card">
           <h2>{posts[0].title}</h2>
-          <p>Posted by u/{posts[0].author} | Score: {posts[0].score} | Comments: {posts[0].num_comments}</p>
+          <p>Posted by u/{posts[0].author} | Upvotes: {posts[0].score} | Comments: {posts[0].num_comments}</p>
           {posts[0].selftext && (
             <p className="post-p">{posts[0].selftext}</p>
           )}
+        </div></>
+      )}
+      {comments.length > 0 && (
+        <div>
+          <h3>Comments:</h3>
+          {comments.map((comment, index) => (
+            <div key={index} className="comment-card">
+              <p><strong>u/{comment.author}</strong> | Upvotes: {comment.score}</p>
+              <p>{comment.body}</p>
+            </div>
+          ))}
         </div>
-        <div className="comment-card">
-            <h3>Comments:</h3>
-            {comments.map((comment, index) => (
-              <div key={index}>
-                <p className="comment-p">u/{comment.author}: {comment.body}</p>
-              </div>
-            ))}
-          </div></>
       )}
     </div>
   );
